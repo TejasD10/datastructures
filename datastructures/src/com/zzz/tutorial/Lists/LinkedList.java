@@ -45,7 +45,8 @@ public class LinkedList<Key extends Comparable> {
 		return build.toString();
 	}
 
-	public class Node<Key extends Comparable> {
+	private class Node<Key extends Comparable> {
+
 		private Key value;
 		private Node next;
 
