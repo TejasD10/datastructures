@@ -81,12 +81,36 @@ public class BST<K extends Comparable> {
 	/**
 	 * InOrder traversal of the tree
 	 */
+	
 	public void inOrder(){
 		inOrder(root);
 	}
 	
 	private void inOrder(Node root){
-		
+		if(root == null) return;
+		inOrder(root.getLeft());
+		System.out.print(root.getKey() + " ");
+		inOrder(root.getRight());
 	}
-
+	
+	public void preOrder(){
+		preOrder(root);
+	}
+	private void preOrder(Node root){
+		if(root == null) return;
+		System.out.print(root.getKey() + " ");
+		preOrder(root.getLeft());
+		preOrder(root.getRight());
+	}
+	public static void main(String[] args) {
+		BST<Integer> tree = new BST<Integer>();
+		tree.insert(30);
+		tree.insert(20);
+		tree.insert(10);
+		System.out.println("In Order");
+		tree.inOrder();
+		
+		System.out.println("\nPre Order");
+		tree.preOrder();
+	}
 }
