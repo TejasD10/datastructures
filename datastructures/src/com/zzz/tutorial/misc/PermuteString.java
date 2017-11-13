@@ -1,5 +1,7 @@
 package com.zzz.tutorial.misc;
 
+import java.util.ArrayList;
+
 /**
  * Given an input string, permute the string and print all the posibilities
  * Backtracking problem, where you choose and unchosse stuff (Basically making
@@ -10,7 +12,10 @@ package com.zzz.tutorial.misc;
 public class PermuteString {
 
 	public static void main(String[] args) {
-		permute(new StringBuilder("ABCD"));
+		//permute(new StringBuilder("ABCD"));
+		
+		//Using ArrayLists
+		ArrayList<String> result = getPerms("abc");
 	}
 
 	public static void permute(StringBuilder s) {
@@ -35,5 +40,33 @@ public class PermuteString {
 
 			}
 		}
+	}
+
+	private static ArrayList<String> getPerms(String s) {
+		ArrayList<String> perms = new ArrayList<String>();
+
+		if (s == null)
+			return perms;
+		else if (s.length() == 0) {
+			perms.add("");
+			return perms;
+		} else {
+			char first = s.charAt(0);
+			String rem = s.substring(1);
+			ArrayList<String> words = getPerms(rem);
+
+			for (String word : words) {
+				for (int j = 0; j <= word.length(); j++) {
+					perms.add(insertCharAt(word, first, j));
+				}
+			}
+		}
+		return perms;
+	}
+
+	private static String insertCharAt(String word, char first, int j) {
+		String left = word.substring(0, j);
+		String right = word.substring(j);
+		return left + first + right;
 	}
 }
