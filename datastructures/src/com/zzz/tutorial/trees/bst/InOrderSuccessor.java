@@ -14,7 +14,7 @@ public class InOrderSuccessor<E extends Comparable> {
 		TreeNode<Integer> tree = new TreeNode<>();
 		tree.insert(Arrays.asList(20, 8, 22, 4, 12, 10, 14));
 		// tree.inOrder(tree.getRoot());
-		Node result = inOrderSuccessor(10, tree.getRoot());
+		Node result = inOrderSuccessor(8, tree.getRoot());
 		result = inOrderSuccessor(result);
 		System.out.println(result == null ? "null" : result.getElement());
 	}
