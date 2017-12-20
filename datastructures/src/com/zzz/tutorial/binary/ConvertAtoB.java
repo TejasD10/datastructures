@@ -13,6 +13,7 @@ public class ConvertAtoB {
 
 		System.out.println(convertBits(a, b));
 		System.out.println(convertBits2(a, b));
+		
 
 	}
 

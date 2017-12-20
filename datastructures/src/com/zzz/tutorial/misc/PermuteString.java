@@ -16,6 +16,7 @@ public class PermuteString {
 		
 		//Using ArrayLists
 		ArrayList<String> result = getPerms("abc");
+		System.out.println(result);
 	}
 
 	public static void permute(StringBuilder s) {

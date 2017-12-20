@@ -9,7 +9,7 @@ package com.zzz.tutorial.misc;
 //@formatter:on
 public class PrintParenthesis {
 	public static void main(String[] args) {
-		printParens(3);
+		printParens(2);
 	}
 
 	private static void printParens(int input) {
@@ -18,10 +18,7 @@ public class PrintParenthesis {
 	}
 
 	private static void parenHelper(char str[], int l, int r, int count) {
-		// Invalid State needs to be added
-		// Whenever there is no right paren left, but there is a left paren
-		// left,
-		// that would be an invalid case.
+
 		if ((l > 0 && r == 0) || l > r)
 			return;
 		if (l == 0 && r == 0) {

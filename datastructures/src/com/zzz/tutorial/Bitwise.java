@@ -3,6 +3,8 @@ package com.zzz.tutorial;
 public class Bitwise {
 	public static void main(String[] args) {
 		System.out.println(hasUniqueChars("abcd"));
+		
+		System.out.println(-8 >> 1);
 	}
 
 	private static boolean hasUniqueChars(String input) {
