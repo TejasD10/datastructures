@@ -9,20 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Test {
 
 	public static final void main(String[] args) throws IOException {
-		try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			
-			@Override
-			public void run() {
-				System.out.println("Shutting down");
-				
-			}
-		});
+		System.out.println(((char) (97 + 2)));
 	}
 
 }

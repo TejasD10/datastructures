@@ -100,7 +100,7 @@ public class IsCyclicList {
 		list.add(40);
 		list.add(50);
 		System.out.println(list);
-		list.head.next.next.next = list.head;
+		list.head.next.next = list.head.next;
 
 		System.out.println(list.isCyclic());
 	}

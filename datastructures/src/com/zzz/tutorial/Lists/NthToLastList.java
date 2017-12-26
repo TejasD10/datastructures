@@ -96,7 +96,7 @@ public class NthToLastList {
 		if (i < n)
 			return null;
 		Node sp = head;
-		while (fp != null) {
+		while (fp.getNext() != null) {
 			fp = fp.getNext();
 			sp = sp.getNext();
 		}
@@ -125,6 +125,6 @@ public class NthToLastList {
 		System.out.println(list);
 		// list.remove(20);
 		// System.out.println(list);
-		System.out.println(list.NtoLast(5));
+		System.out.println(list.NtoLast(2));
 	}
 }
