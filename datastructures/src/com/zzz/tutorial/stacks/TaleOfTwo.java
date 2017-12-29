@@ -7,35 +7,36 @@ public class TaleOfTwo {
 	public static class MyQueue<T> {
 		Stack<T> stackNewestOnTop = new Stack<T>();
 		Stack<T> stackOldestOnTop = new Stack<T>();
-		private T TOP;
 
 		public void enqueue(T value) { // Push onto newest stack
 			stackNewestOnTop.push(value);
-			if (TOP == null)
-				TOP = value;
 		}
 
 		public T peek() {
-			if (stackNewestOnTop.empty())
-				return null;
-			return TOP;
+			if (stackOldestOnTop.isEmpty() && !stackNewestOnTop.isEmpty())
+				makeReady();
+			return (stackOldestOnTop.isEmpty()) ? null : stackOldestOnTop.peek();
 		}
 
 		public T dequeue() {
-			if (stackNewestOnTop.empty())
+			if (stackOldestOnTop.empty() && stackNewestOnTop.empty())
 				return null;
-			while (!stackNewestOnTop.empty()) {
-				stackOldestOnTop.push(stackNewestOnTop.pop());
-			}
-			T item = stackOldestOnTop.pop();
-			if (!stackOldestOnTop.empty())
-				TOP = stackOldestOnTop.peek();
-			else
-				TOP = null;
-			while (!stackOldestOnTop.empty()) {
-				stackNewestOnTop.push(stackOldestOnTop.pop());
+			T item;
+			if (stackOldestOnTop.empty()) {
+				makeReady();
+				item = stackOldestOnTop.pop();
+			} else {
+				item = stackOldestOnTop.pop();
 			}
 			return item;
+		}
+
+		private void makeReady() {
+			if (!stackNewestOnTop.isEmpty()) {
+				while (!stackNewestOnTop.isEmpty()) {
+					stackOldestOnTop.push(stackNewestOnTop.pop());
+				}
+			}
 		}
 	}
 
