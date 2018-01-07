@@ -19,7 +19,7 @@ public class PrintParenthesis {
 
 	private static void parenHelper(char str[], int l, int r, int count) {
 
-		if ((l > 0 && r == 0) || l > r)
+		if (/*(l > 0 && r == 0) ||*/ l > r)
 			return;
 		if (l == 0 && r == 0) {
 			System.out.println(str);

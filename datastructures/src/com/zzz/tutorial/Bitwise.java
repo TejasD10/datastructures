@@ -1,5 +1,11 @@
 package com.zzz.tutorial;
 
+/**
+ * Check if a string has unique characters.
+ * This can be done using a histogram or using this method where
+ * each character is "stored" at the bit position and then compared
+ * O(n) and memory effecient.
+ */
 public class Bitwise {
 	public static void main(String[] args) {
 		System.out.println(hasUniqueChars("abcd"));
