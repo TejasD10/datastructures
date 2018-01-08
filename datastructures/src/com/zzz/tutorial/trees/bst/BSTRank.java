@@ -115,6 +115,7 @@ public class BSTRank<Key extends Comparable> {
 		bst.insert(40);
 		bst.insert(50);
 		bst.preOrder();
+		System.out.println("\nFloor: " + bst.floor(bst.getRoot(), 20));
 
 	}
 

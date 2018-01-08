@@ -3,159 +3,199 @@ package com.zzz.tutorial.trees.bst;
 import java.util.Stack;
 
 /**
- * 
  * Pre-Order traversal, in an iterative way.
- *
  */
 public class BSTTraversal<Key extends Comparable> {
-	private final static class Node<Key extends Comparable> {
-		private Key element;
-		private Node parent;
-		private Node left;
-		private Node right;
-		private int count;
+    private Node root;
 
-		public Node(Key element, Node parent, Node left, Node right, int count) {
-			this.element = element;
-			this.parent = parent;
-			this.left = left;
-			this.right = right;
-			this.count = count;
-		}
+    public BSTTraversal() {
 
-		public Key getElement() {
-			return element;
-		}
+    }
 
-		public void setElement(Key element) {
-			this.element = element;
-		}
+    public static void main(String[] args) {
+        BSTTraversal<Integer> tree = new BSTTraversal<>();
 
-		public Node getParent() {
-			return parent;
-		}
+        tree.insert(9);
+        tree.insert(6);
+        tree.insert(12);
+        tree.insert(5);
+        tree.insert(7);
+        tree.insert(11);
+        tree.insert(13);
 
-		public void setParent(Node parent) {
-			this.parent = parent;
-		}
+        System.out.println("Pre Order");
+        tree.preOrderIterative(tree.root);
+        System.out.println("\nIn Order");
+        tree.inOrderIterative(tree.getRoot());
+        System.out.println("\nPost Order");
+        tree.postOrderIterative(tree.getRoot());
+    }
 
-		public Node getLeft() {
-			return left;
-		}
+    // Insert
+    public void insert(Key value) {
+        setRoot(insert(getRoot(), value));
+    }
 
-		public void setLeft(Node left) {
-			this.left = left;
-		}
+    private Node insert(Node root, Key value) {
+        if (root == null)
+            return new Node(value, null, null, null, 1);
 
-		public Node getRight() {
-			return right;
-		}
+        if (value.compareTo(root.getElement()) < 0)
+            root.setLeft(insert(root.getLeft(), value));
+        if (value.compareTo(root.getElement()) > 0)
+            root.setRight(insert(root.getRight(), value));
 
-		public void setRight(Node right) {
-			this.right = right;
-		}
+        root.count = 1 + depth(root.left) + depth(root.right);
+        return root;
+    }
 
-		public String toString() {
-			return new String("(" + element + ", " + count + ")");
-		}
+    private int depth(Node root) {
+        if (root == null)
+            return 0;
+        return root.count;
+    }
 
-	}
+    public Node getRoot() {
+        return root;
+    }
 
-	private Node root;
+    public void setRoot(Node root) {
+        this.root = root;
+    }
 
-	public BSTTraversal() {
+    public void preOrderIterative(Node root) {
+        if (root == null)
+            return;
 
-	}
+        Stack<Node> stack = new Stack<Node>();
 
-	// Insert
-	public void insert(Key value) {
-		setRoot(insert(getRoot(), value));
-	}
+        // STack the right item, so that it can be visited again
+        stack.push(root.getRight());
+        stack.push(root.getLeft());
+        System.out.print(root.getElement() + " ");
 
-	private Node insert(Node root, Key value) {
-		if (root == null)
-			return new Node(value, null, null, null, 1);
+        while (!stack.isEmpty()) {
+            Node temp = stack.pop();
+            if (temp != null) {
+                System.out.print(temp.getElement() + " ");
+                stack.push(temp.getRight());
+                stack.push(temp.getLeft());
+            }
+        }
+    }
 
-		if (value.compareTo(root.getElement()) < 0)
-			root.setLeft(insert(root.getLeft(), value));
-		if (value.compareTo(root.getElement()) > 0)
-			root.setRight(insert(root.getRight(), value));
+    // In Order Iterative
+    public void inOrderIterative(Node root) {
+        if (root == null)
+            return;
+        Stack<Node> stack = new Stack<Node>();
+        Node current, temp;
 
-		root.count = 1 + depth(root.left) + depth(root.right);
-		return root;
-	}
+        current = root;
 
-	private int depth(Node root) {
-		if (root == null)
-			return 0;
-		return root.count;
-	}
+        do {
+            while (current != null) {
+                stack.push(current);
+                current = current.getLeft();
+            }
+            temp = stack.pop();
+            System.out.print(temp.getElement() + " ");
+            current = temp.getRight();
 
-	public Node getRoot() {
-		return root;
-	}
+        } while (current != null || !stack.isEmpty());
 
-	public void setRoot(Node root) {
-		this.root = root;
-	}
+    }
 
-	public void preOrderIterative(Node root) {
-		if (root == null)
-			return;
+    /**
+     * Post Order Iterative Solution
+     */
+    public void postOrderIterative(Node root) {
 
-		Stack<Node> stack = new Stack<Node>();
+        if (root == null)
+            return;
 
-		// STack the right item, so that it can be visited again
-		stack.push(root.getRight());
-		stack.push(root.getLeft());
-		System.out.print(root.getElement() + " ");
+        Node current, temp;
+        Stack<Node> stack = new Stack<Node>();
+        current = root;
+        do {
+            while (current != null) {
+                //Push the right node followed by the root node of the current node.
+                if (current.getRight() != null)
+                    stack.push(current.getRight());
+                stack.push(current);
+                current = current.getLeft();
+            }
 
-		while (!stack.isEmpty()) {
-			Node temp = stack.pop();
-			if (temp != null) {
-				System.out.print(temp.getElement() + " ");
-				stack.push(temp.getRight());
-				stack.push(temp.getLeft());
-			}
-		}
-	}
+            /*
+             * Now the current node is null and the leftmost node has been added
+             * to the stack
+             * */
+            temp = stack.pop();
+            //check whether the stack is empty for the last element.
+            //When printing the root of the tree, it will call stack.peek which will throw a EmptyStackException.
+            if (temp.getRight() != null && !stack.isEmpty() && stack.peek() == temp.getRight()) {
+                Node top = stack.pop();
+                stack.push(temp);
+                current = top;
+            } else {
+                System.out.print(temp.getElement() + " ");
+                current = null;
+            }
 
-	// In Order Iterative
-	public void inOrderIterative(Node root) {
-		if (root == null)
-			return;
-		Stack<Node> stack = new Stack<Node>();
-		Node current, temp;
+        } while (!stack.isEmpty());
 
-		current = root;
+    }
 
-		do {
-			while(current != null){
-				stack.push(current);
-				current = current.getLeft();
-			}
-			temp = stack.pop();
-			System.out.print(temp.getElement() + " ");
-			current = temp.getRight();
+    private final static class Node<Key extends Comparable> {
+        private Key element;
+        private Node parent;
+        private Node left;
+        private Node right;
+        private int count;
 
-		} while (current != null || !stack.isEmpty());
+        public Node(Key element, Node parent, Node left, Node right, int count) {
+            this.element = element;
+            this.parent = parent;
+            this.left = left;
+            this.right = right;
+            this.count = count;
+        }
 
-	}
+        public Key getElement() {
+            return element;
+        }
 
-	public static void main(String[] args) {
-		BSTTraversal<Integer> tree = new BSTTraversal<>();
+        public void setElement(Key element) {
+            this.element = element;
+        }
 
-		tree.insert(9);
-		tree.insert(6);
-		tree.insert(12);
-		tree.insert(5);
-		tree.insert(7);
-		tree.insert(11);
-		tree.insert(13);
-		
-		System.out.println("Pre Order");
-		tree.preOrderIterative(tree.root);
-		System.out.println("\nIn Order");
-		tree.inOrderIterative(tree.getRoot());
-	}
+        public Node getParent() {
+            return parent;
+        }
+
+        public void setParent(Node parent) {
+            this.parent = parent;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
+        }
+
+        public String toString() {
+            return new String("(" + element + ", " + count + ")");
+        }
+
+    }
 }
