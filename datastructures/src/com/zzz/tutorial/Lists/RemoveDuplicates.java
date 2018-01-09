@@ -10,12 +10,25 @@ public class RemoveDuplicates {
     private Node head = null;
     private Node tail = null;
 
+    public static void main(String args[]) {
+        RemoveDuplicates list = new RemoveDuplicates();
+        list.insert(10);
+        list.insert(20);
+        list.insert(10);
+        list.insert(30);
+        list.insert(30);
+        list.insert(40);
+        //list.removeDupsUsingLookup();
+        list.removeDuplicates();
+        list.printList();
+    }
+
     public void insert(int data) {
         if (head == null) {
             head = new Node(data, null);
             tail = head;
         }
-        Node newNode = new Node(data, null);
+        Node newNode = new Node(data, null);{
         tail.next = newNode;
         tail = newNode;
     }
@@ -52,6 +65,32 @@ public class RemoveDuplicates {
 
     }
 
+    /**
+     * The below method removes the duplicates from the linked list and runs in quadratic
+     * time with no additional space O(1)
+     * Test Cases:
+     * 1 -> 2 -> 3 -> 1
+     */
+    public void removeDuplicates() {
+        if (head == null) {
+            System.out.println("Empty List.");
+            return;
+        }
+        Node current = head, temp = null, prev = null;
+        while (current.next != null) {
+            temp = current.next;
+            prev = current;
+            while (temp != null) {
+                if (temp.data == current.data) {
+                    prev.next = temp.next;
+                }
+                prev = temp;
+                temp = temp.next;
+            }
+            current = current.next;
+        }
+    }
+
     private static class Node {
         int data;
         Node next;
@@ -64,17 +103,6 @@ public class RemoveDuplicates {
         public String toString() {
             return String.valueOf(data);
         }
-    }
-    public static void main(String args[]){
-        RemoveDuplicates list = new RemoveDuplicates();
-        list.insert(10);
-        list.insert(20);
-        list.insert(10);
-        list.insert(30);
-        list.insert(30);
-        list.insert(40);
-        list.removeDupsUsingLookup();
-        list.printList();
     }
 }
 
