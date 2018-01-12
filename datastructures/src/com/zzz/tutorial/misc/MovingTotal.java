@@ -32,22 +32,12 @@ public class MovingTotal {
         for (int i = 0; i < list.length; i++) {
             runningList.add(list[i]);
         }
-        int sum = 0;
-        if (sums.isEmpty()) {
-            for (int i = 0; i < (list.length - 2); i++) {
-                sum = 0;
-                for (int j = i; (i + j) < list.length; j++) {
-                    sum += list[i + j];
-                }
-                sums.add(sum);
-            }
-            return;
-        }
-        int run = 0;
+        int run = 0, sum = 0;
         int index = runningList.size() - 1;
         for (int i = 0; i < list.length; i++) {
             sum = 0;
-
+            if (index < 2)
+                break;
             while (run < 3) {
                 sum += runningList.get(index - run);
                 run++;
