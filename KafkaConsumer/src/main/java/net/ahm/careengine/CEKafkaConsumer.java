@@ -5,25 +5,22 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Properties;
 
-import org.apache.kafka.clients.CommonClientConfigs;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.streams.kstream.KStreamBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class CEKafkaConsumer {
 
-	private static final Logger log = LogManager.getLogger(CEKafkaProducer.class.getName());
+	private static final Logger log = LogManager.getLogger(CEKafkaConsumer.class.getName());
 
 	public static void main(String[] args) throws UnknownHostException {
-		String topicName = "CEmemberRun";
+		String topicName = "PDSTEST";
 		log.info("Topic name is: {}", topicName);
 
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "nycuvig1kafka01.ahmcert.com:9092");
+		props.put("bootstrap.servers", "azbuvdv1kafka01.ahmcert.com:9092");
 		props.put("group.id", InetAddress.getLocalHost().getHostName().toString() + "TD");
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");
