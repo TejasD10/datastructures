@@ -3,7 +3,7 @@ package com.zzz.tutorial.misc;
 import java.util.ArrayList;
 
 /**
- * Given an input string, permute the string and print all the posibilities
+ * Given an input string, permute the string and print all the possibilities
  * Backtracking problem, where you choose and unchosse stuff (Basically making
  * choices and returning back to try other choices.
  * 

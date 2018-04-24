@@ -28,7 +28,7 @@ public class RemoveDuplicates {
             head = new Node(data, null);
             tail = head;
         }
-        Node newNode = new Node(data, null);{
+        Node newNode = new Node(data, null);
         tail.next = newNode;
         tail = newNode;
     }
