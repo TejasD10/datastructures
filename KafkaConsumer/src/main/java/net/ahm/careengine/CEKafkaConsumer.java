@@ -16,11 +16,11 @@ public class CEKafkaConsumer {
 	private static final Logger log = LogManager.getLogger(CEKafkaConsumer.class.getName());
 
 	public static void main(String[] args) throws UnknownHostException {
-		String topicName = "PDSTEST";
+		String topicName = "MemberDataNewEvents";
 		log.info("Topic name is: {}", topicName);
 
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "azbuvdv1kafka01.ahmcert.com:9092");
+		props.put("bootstrap.servers", "azbuvuatkafka01.activehealth.loc:9092,azbuvuatkafka02.activehealth.loc:9092");
 		props.put("group.id", InetAddress.getLocalHost().getHostName().toString() + "TD");
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");

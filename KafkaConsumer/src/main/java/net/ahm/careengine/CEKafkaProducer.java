@@ -20,7 +20,7 @@ public class CEKafkaProducer {
 		log.info("Topic name is: {}", topicName);
 		Properties props = new Properties();
 
-		props.put("bootstrap.servers", "azbuvdv1kafka01.ahmcert.com:9092");
+		props.put("bootstrap.servers", "azbuvqa1kafka01.ahmcert.com:9092,azbuvqa1kafka02.ahmcert.com:9092");
 		// props.put("acks", "all");
 		props.put("retries", 0);
 		props.put("batch.size", 16384);
