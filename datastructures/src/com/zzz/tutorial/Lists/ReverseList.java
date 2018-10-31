@@ -44,9 +44,9 @@ public class ReverseList {
         // list.head.next.next.next.next = new Node(5, null);
 
         // list.print();
-        // list.reverse();
-        Node temp = list.reverse_recurse(list.head);
-        temp.next = null;
+         list.reverse();
+//        Node temp = list.reverse_recurse(list.head);
+//        temp.next = null;
         System.out.println();
         //System.out.println("Min = " + list.findMin());
         list.print();

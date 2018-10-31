@@ -16,11 +16,12 @@ public class CEKafkaProducer {
 	private static KafkaProducer<Integer, String> producer;
 
 	public static void main(String[] args) {
-		String topicName = "CEmemberRun";
+		String topicName = "MemberDataNewEvents";
 		log.info("Topic name is: {}", topicName);
 		Properties props = new Properties();
 
-		props.put("bootstrap.servers", "azbuvqa1kafka01.ahmcert.com:9092,azbuvqa1kafka02.ahmcert.com:9092");
+//		props.put("bootstrap.servers", "azauvprdkafka01.ahmcert.com:9092, azauvprdkafka02.ahmcert.com:9092");
+		props.put("bootstrap.servers", "azbuvdv1kafka01.ahmcert.com:9092");
 		// props.put("acks", "all");
 		props.put("retries", 0);
 		props.put("batch.size", 16384);
@@ -39,8 +40,7 @@ public class CEKafkaProducer {
 			int N = 1;
 			Random rand = new Random();
 			for (int i = 0; i < N; i++) {
-				jsonStrings[i] = "{\"memberPlanId\" : 1780586470,\"memberId\" : 400361562"// + Math.abs(rand.nextInt())
-						+ ",\"eventTypes\" : [ \"\" ],\"accountId\" : null,\"supplierId\" : 6372,\"eventSource\" : \"SS_UE\"}";
+				jsonStrings[i] = "{\"memberPlanId\" : 1780586470,\"memberId\" : 400361562,\"eventTypes\" : [ \"\" ],\"accountId\" : null,\"supplierId\" : 6372,\"eventSource\" : \"SS_UE\"}";
 			}
 			//String jsonString = "{\"memberPlanId\" : 72860305,\"memberId\" : 64709710,\"eventTypes\" : [ \"LAB\", \"CLINICAL\" ],\"accountId\" : null,\"supplierId\" : null,\"eventSource\" : \"AA\"}";
 			for (int i = 0; i < N; i++) {

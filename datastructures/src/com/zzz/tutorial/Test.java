@@ -8,8 +8,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Test {
 
-	public static final void main(String[] args) throws IOException {
-		System.out.println(((char) (97 + 2)));
+	public static void main(String[] args) throws IOException {
+		String str = String.format("%.2f", 47.1163);
+		System.out.println(str);
 	}
 
 }

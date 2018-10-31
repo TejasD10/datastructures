@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class PermuteString {
 
 	public static void main(String[] args) {
-		//permute(new StringBuilder("ABCD"));
+		//permute(new StringBuilder("ABC"));
 		
 		//Using ArrayLists
-		ArrayList<String> result = getPerms("abc");
+		ArrayList<String> result = getPerms("ABC");
 		System.out.println(result);
 	}
 
