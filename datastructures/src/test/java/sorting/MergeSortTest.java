@@ -1,3 +1,5 @@
+package sorting;
+
 import com.zzz.tutorial.sorting.MergeSort;
 import org.junit.Assert;
 import org.junit.Test;
