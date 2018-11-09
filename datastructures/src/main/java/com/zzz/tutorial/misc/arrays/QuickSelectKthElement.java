@@ -1,61 +1,52 @@
 package com.zzz.tutorial.misc.arrays;
 
 public class QuickSelectKthElement {
-    // Standard partition process of QuickSort.
-    // It considers the last element as pivot
-    // and moves all smaller element to left of
-    // it and greater elements to right
-    public static int partition(int[] arr, int l,
-                                int r) {
-        int x = arr[r], i = l;
-        for (int j = l; j <= r - 1; j++) {
-            if (arr[j] <= x) {
-                //Swapping arr[i] and arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
 
-                i++;
-            }
+    public static int partition(int[] input, int lo, int hi) {
+
+        // Select the pivot
+        int pivot = hi;
+        int start = lo, end = hi - 1;
+
+        // Find the right index for the pivot element
+        while (start <= end) {
+
+            // Move the start pointer forward
+            // until you find elemenents smaller than the pivot
+            while (input[start++] <= input[pivot]) if (start == hi) break;
+            while (input[end--] >= input[pivot]) if (end == lo) break;
+            if (start > end) break;
+            swap(input, start, end);
         }
-
-        //Swapping arr[i] and arr[r]
-        int temp = arr[i];
-        arr[i] = arr[r];
-        arr[r] = temp;
-
-        return i;
+        swap(input, pivot, start);
+        return start;
     }
 
-    // This function returns k'th smallest element
-    // in arr[l..r] using QuickSort based method.
-    // ASSUMPTION: ALL ELEMENTS IN ARR[] ARE DISTINCT
-    public static int kthSmallest(int[] arr, int l,
-                                  int r, int k) {
-        // If k is smaller than number of elements
-        // in array
-        if (k > 0 && k <= r - l + 1) {
-            // Partition the array around last
-            // element and get position of pivot
-            // element in sorted array
-            int pos = partition(arr, l, r);
+    private static void swap(int[] input, int pivot, int end) {
+        int temp = input[pivot];
+        input[pivot] = input[end];
+        input[end] = temp;
+    }
 
-            // If position is same as k
-            if (pos - l == k - 1)
-                return arr[pos];
+    public static int kthSmallest(int[] input, int lo, int hi, int k) {
+        // First check the input
+        if (input == null || input.length == 0)
+            return Integer.MAX_VALUE; // Error case
 
-            // If position is more, recur for
-            // left subarray
-            if (pos - l > k - 1)
-                return kthSmallest(arr, l, pos - 1, k);
+        // Boundary checks for K
+        if (k < 0 || k > hi)
+            return Integer.MAX_VALUE; // Error case
 
-            // Else recur for right subarray
-            return kthSmallest(arr, pos + 1, r, k - pos + l - 1);
-        }
-
-        // If k is more than number of elements
-        // in array
-        return Integer.MAX_VALUE;
+        int pos = partition(input, lo, hi);
+        // Position == K
+        if (pos - 1 == k - 1)
+            return input[pos - 1]; // Return the Kth result
+        // If the position returned is greater than K
+        // branch left
+        if (pos - 1 > k - 1)
+            return kthSmallest(input, lo, pos - 1, k);
+        // Else branch right
+        return kthSmallest(input, pos + 1, k, k);
     }
 
     // Driver program to test above methods
