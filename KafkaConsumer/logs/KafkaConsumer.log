@@ -20252,3 +20252,115 @@ main  INFO [2018-09-27 14:30:49,027] internals.ConsumerCoordinator - Revoking pr
 main  INFO [2018-09-27 14:30:49,027] internals.AbstractCoordinator - (Re-)joining group ALPTDESAI7136TD7
 main  INFO [2018-09-27 14:30:49,392] internals.AbstractCoordinator - Successfully joined group ALPTDESAI7136TD7 with generation 1
 main  INFO [2018-09-27 14:30:49,393] internals.ConsumerCoordinator - Setting newly assigned partitions [aapreauth-10, aapreauth-0, aapreauth-9, aapreauth-4, aapreauth-6, aapreauth-5, aapreauth-3, aapreauth-7, aapreauth-1, aapreauth-2, aapreauth-8] for group ALPTDESAI7136TD7
+main  INFO [2018-11-13 12:15:52,515] careengine.CEKafkaProducer - Topic name is: MemberDataNewEvents
+main  INFO [2018-11-13 12:15:52,571] producer.ProducerConfig - ProducerConfig values: 
+	metric.reporters = []
+	metadata.max.age.ms = 300000
+	reconnect.backoff.ms = 50
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	bootstrap.servers = [azbuvqa1kafka01.ahmcert.com:9092]
+	ssl.keystore.type = JKS
+	sasl.mechanism = GSSAPI
+	max.block.ms = 2000
+	interceptor.classes = null
+	ssl.truststore.password = null
+	client.id = 
+	ssl.endpoint.identification.algorithm = null
+	request.timeout.ms = 30000
+	acks = 1
+	receive.buffer.bytes = 32768
+	ssl.truststore.type = JKS
+	retries = 0
+	ssl.truststore.location = null
+	ssl.keystore.password = null
+	send.buffer.bytes = 131072
+	compression.type = none
+	metadata.fetch.timeout.ms = 60000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	buffer.memory = 33554432
+	timeout.ms = 30000
+	key.serializer = class org.apache.kafka.common.serialization.IntegerSerializer
+	sasl.kerberos.service.name = kafka
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	ssl.trustmanager.algorithm = PKIX
+	block.on.buffer.full = false
+	ssl.key.password = null
+	sasl.kerberos.min.time.before.relogin = 60000
+	connections.max.idle.ms = 540000
+	max.in.flight.requests.per.connection = 5
+	metrics.num.samples = 2
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	batch.size = 16384
+	ssl.keystore.location = null
+	ssl.cipher.suites = null
+	security.protocol = SASL_PLAINTEXT
+	max.request.size = 1048576
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	ssl.keymanager.algorithm = SunX509
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	linger.ms = 1
+
+main  INFO [2018-11-13 12:15:53,744] authenticator.AbstractLogin - Successfully logged in.
+kafka-kerberos-refresh-thread  INFO [2018-11-13 12:15:53,746] kerberos.KerberosLogin - TGT refresh thread started.
+kafka-kerberos-refresh-thread  INFO [2018-11-13 12:15:53,749] kerberos.KerberosLogin - TGT valid starting at: 2018-11-13T12:15:53.000-0500
+kafka-kerberos-refresh-thread  INFO [2018-11-13 12:15:53,749] kerberos.KerberosLogin - TGT expires: 2018-11-14T12:15:53.000-0500
+kafka-kerberos-refresh-thread  INFO [2018-11-13 12:15:53,750] kerberos.KerberosLogin - TGT refresh sleeping until: 2018-11-14T07:37:55.220-0500
+main  INFO [2018-11-13 12:15:53,807] producer.ProducerConfig - ProducerConfig values: 
+	metric.reporters = []
+	metadata.max.age.ms = 300000
+	reconnect.backoff.ms = 50
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	bootstrap.servers = [azbuvqa1kafka01.ahmcert.com:9092]
+	ssl.keystore.type = JKS
+	sasl.mechanism = GSSAPI
+	max.block.ms = 2000
+	interceptor.classes = null
+	ssl.truststore.password = null
+	client.id = producer-1
+	ssl.endpoint.identification.algorithm = null
+	request.timeout.ms = 30000
+	acks = 1
+	receive.buffer.bytes = 32768
+	ssl.truststore.type = JKS
+	retries = 0
+	ssl.truststore.location = null
+	ssl.keystore.password = null
+	send.buffer.bytes = 131072
+	compression.type = none
+	metadata.fetch.timeout.ms = 60000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	buffer.memory = 33554432
+	timeout.ms = 30000
+	key.serializer = class org.apache.kafka.common.serialization.IntegerSerializer
+	sasl.kerberos.service.name = kafka
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	ssl.trustmanager.algorithm = PKIX
+	block.on.buffer.full = false
+	ssl.key.password = null
+	sasl.kerberos.min.time.before.relogin = 60000
+	connections.max.idle.ms = 540000
+	max.in.flight.requests.per.connection = 5
+	metrics.num.samples = 2
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	batch.size = 16384
+	ssl.keystore.location = null
+	ssl.cipher.suites = null
+	security.protocol = SASL_PLAINTEXT
+	max.request.size = 1048576
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	ssl.keymanager.algorithm = SunX509
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	linger.ms = 1
+
+main  INFO [2018-11-13 12:15:53,810] utils.AppInfoParser - Kafka version : 0.10.0.1
+main  INFO [2018-11-13 12:15:53,810] utils.AppInfoParser - Kafka commitId : a7a17cdec9eaa6c5
+main  INFO [2018-11-13 12:16:01,502] producer.KafkaProducer - Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+kafka-kerberos-refresh-thread  WARN [2018-11-13 12:16:01,513] kerberos.KerberosLogin - TGT renewal thread has been interrupted and will exit.
