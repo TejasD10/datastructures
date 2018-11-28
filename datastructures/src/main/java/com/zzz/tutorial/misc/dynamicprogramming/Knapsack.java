@@ -21,7 +21,6 @@ public class Knapsack {
         if (vals.length != weights.length)
             return -1;
 
-        Map<Integer, Integer> cache = new HashMap<>();
         return knapsack(vals, weights, maxWeight, 0);
     }
 
