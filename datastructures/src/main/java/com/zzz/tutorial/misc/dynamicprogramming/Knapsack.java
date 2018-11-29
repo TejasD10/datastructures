@@ -14,7 +14,7 @@ public class Knapsack {
     public static int knapsack(int[] vals, int[] weights, int maxWeight) {
         // Check for the boundary case
         // if either of one is empty there is nothing to be put in the knapsack
-        if (vals.length == 0 || weights.length == 0)
+        if (vals.length == 0 || weights.length == 0 || maxWeight == 0)
             return 0;
         // Since we are representing this as an array,
         // the length of both the vals and weights should be equal

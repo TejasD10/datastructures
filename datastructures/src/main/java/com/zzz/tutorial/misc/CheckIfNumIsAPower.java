@@ -18,7 +18,7 @@ public class CheckIfNumIsAPower {
             return false;
         }
         if (num <= 2) return true; // 1 = 1^1 and 2 = 2^1
-        for (int x = 2; x < Math.sqrt(num); x++) {
+        for (int x = 2; x <= Math.sqrt(num); x++) {
             int y = 2;
 
             double p = Math.pow(x, y);
