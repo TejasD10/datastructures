@@ -41,7 +41,7 @@ public class MaxDiffAncestor {
 
         // Return the minimum of the min element found, or the root.data
         // As there could be a case where the min element may be greater than
-        // the root.dataa
+        // the root.data
         return Math.min(root.data, min);
     }
 
