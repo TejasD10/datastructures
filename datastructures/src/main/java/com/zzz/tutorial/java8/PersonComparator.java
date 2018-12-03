@@ -2,6 +2,7 @@ package com.zzz.tutorial.java8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PersonComparator {
@@ -90,7 +91,24 @@ public class PersonComparator {
         people.stream()
                 .min(Person::ageDifference)
                 .ifPresent(p1 -> System.out.println("Youngest: " + p1));
-                
+        
+        /*
+        Group the people in the person list by their age
+        In this case, you can use the collectors.groupingBy to do the same
+         */
+        Map<Integer, List<Person>> peopleByAge = people.stream()
+                                                         .collect(Collectors.groupingBy(Person::getAge));
+        System.out.println("People grouped by age: " + peopleByAge);
+        
+        /*
+        Instead of using the above syntax where we are only grouping each person by their age
+        We can also use a different mapping/reducing for each bucket.
+         */
+        System.out.println("\n\nFor each, get the first name of the person");
+        Map<Integer, List<Character>> firstNameByAge = people.stream()
+                                                               .collect(Collectors.groupingBy(Person::getAge, Collectors.mapping(p -> p.getName().charAt(0), Collectors.toList())));
+        System.out.println(firstNameByAge);
+        
         
     }
 }
