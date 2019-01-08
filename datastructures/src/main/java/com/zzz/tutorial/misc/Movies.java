@@ -1,3 +1,12 @@
+package com.zzz.tutorial.misc;
+
+import com.google.gson.Gson;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+import java.util.Scanner;
 
 public class Movies {
     /*
@@ -84,7 +93,7 @@ public class Movies {
         private String page;
         private Integer per_page;
         private Integer total;
-        private List<Movies> movies;
+        private List<Movie> movies;
 
         public MovieResponse() {
 
@@ -114,22 +123,22 @@ public class Movies {
             this.total = total;
         }
 
-        public List<Movies> getMovies() {
+        public List<Movie> getMovies() {
             return movies;
         }
 
-        public void setMovies(List<Movies> movies) {
+        public void setMovies(List<Movie> movies) {
             this.movies = movies;
         }
     }
 
-    private static final class Movies {
+    private static final class Movie {
         private String poser;
         private String type;
         private String year;
         private String imdbId;
 
-        public Movies() {
+        public Movie() {
 
         }
 
@@ -165,3 +174,4 @@ public class Movies {
             this.imdbId = imdbId;
         }
     }
+}

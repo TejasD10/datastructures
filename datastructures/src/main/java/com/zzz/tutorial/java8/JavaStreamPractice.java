@@ -9,4 +9,13 @@ public class JavaStreamPractice {
                 .map(item -> item.toUpperCase())
                 .collect(Collectors.toList());
     }
+
+    public static List<String> transformToLessThan4Chars(List<String> input) {
+        return input.stream()
+                .filter(item -> item.length() < 4)
+                .collect(Collectors.toList());
+    }
+    private static class Person {
+
+    }
 }
