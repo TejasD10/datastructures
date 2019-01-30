@@ -15,6 +15,7 @@ public class PrintPaths {
         if (isAtLimit(board, i, j)) {
             // Reached the end
             current += String.valueOf(board[i][j]);
+
             response.add(current);
             return response;
         }

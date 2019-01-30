@@ -17,5 +17,6 @@ public class JavaStreamPractice {
     }
     private static class Person {
 
+
     }
 }

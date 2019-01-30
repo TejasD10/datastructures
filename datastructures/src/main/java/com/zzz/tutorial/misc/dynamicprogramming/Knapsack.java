@@ -1,8 +1,5 @@
 package com.zzz.tutorial.misc.dynamicprogramming;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Knapsack {
     public static void main(String args[]) {
         int[] vals = {6, 10, 12};

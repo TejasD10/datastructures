@@ -14,9 +14,9 @@ public class FindFirst1InSortedArray {
     }
 
     private static int findFirstIndex(int[] input) {
-        if (input[0] == 1) // The first number is 1, edge case
-            return 0;
-        if (input[input.length - 1] == 0) // Edge case, where there are no 1's
+            if (input[0] == 1) // The first number is 1, edge case
+                return 0;
+            if (input[input.length - 1] == 0) // Edge case, where there are no 1's
             return -1;
         return binarySearch(input, 0, input.length - 1);
     }
